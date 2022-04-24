@@ -58,7 +58,7 @@ yandex_site_verification :
 # Social Sharing
 twitter:
   username               : &twitter
-facebook:
+facebook                 : 
   username               :
   app_id                 :
   publisher              :
@@ -109,7 +109,7 @@ author:
   stackoverflow    : # http://stackoverflow.com/users/123456/username
   steam            :
   tumblr           :
-  twitter          : "replacethistwitterhandle"
+  twitter          : "@MahfuzulNissan"
   vine             :
   weibo            :
   xing             :

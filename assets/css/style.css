@@ -1007,6 +1007,14 @@ main {
 
 .project-item > a:hover img { transform: scale(1.1); }
 
+.research .project-img {
+  height: 260px;
+}
+
+.research .project-img img {
+  object-position: center;
+}
+
 .project-title,
 .project-category { margin-left: 10px; }
 

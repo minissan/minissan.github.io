@@ -114,6 +114,71 @@ for (let i = 0; i < filterBtn.length; i++) {
 }
 
 
+// research filter variables
+const researchSelect = document.querySelector("[data-research-select]");
+const researchSelectItems = document.querySelectorAll("[data-research-select-item]");
+const researchSelectValue = document.querySelector("[data-research-select-value]");
+const researchFilterBtn = document.querySelectorAll("[data-research-filter-btn]");
+const researchFilterItems = document.querySelectorAll("[data-research-filter-item]");
+
+if (researchSelect && researchSelectValue && researchFilterBtn.length > 0 && researchFilterItems.length > 0) {
+  researchSelect.addEventListener("click", function () { elementToggleFunc(this); });
+
+  const researchFilterFunc = function (selectedValue) {
+
+    for (let i = 0; i < researchFilterItems.length; i++) {
+
+      if (selectedValue === "all") {
+        researchFilterItems[i].classList.add("active");
+      } else if (selectedValue === researchFilterItems[i].dataset.researchCategory) {
+        researchFilterItems[i].classList.add("active");
+      } else {
+        researchFilterItems[i].classList.remove("active");
+      }
+
+    }
+
+  }
+
+  for (let i = 0; i < researchSelectItems.length; i++) {
+    researchSelectItems[i].addEventListener("click", function () {
+
+      let selectedValue = this.innerText.toLowerCase();
+      researchSelectValue.innerText = this.innerText;
+      elementToggleFunc(researchSelect);
+      researchFilterFunc(selectedValue);
+
+      for (let j = 0; j < researchFilterBtn.length; j++) {
+        if (researchFilterBtn[j].innerText.toLowerCase() === selectedValue) {
+          researchFilterBtn[j].classList.add("active");
+        } else {
+          researchFilterBtn[j].classList.remove("active");
+        }
+      }
+
+    });
+  }
+
+  let lastClickedResearchBtn = researchFilterBtn[0];
+
+  for (let i = 0; i < researchFilterBtn.length; i++) {
+
+    researchFilterBtn[i].addEventListener("click", function () {
+
+      let selectedValue = this.innerText.toLowerCase();
+      researchSelectValue.innerText = this.innerText;
+      researchFilterFunc(selectedValue);
+
+      lastClickedResearchBtn.classList.remove("active");
+      this.classList.add("active");
+      lastClickedResearchBtn = this;
+
+    });
+
+  }
+}
+
+
 
 // contact form variables
 const form = document.querySelector("[data-form]");
